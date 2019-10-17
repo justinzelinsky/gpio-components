@@ -13,11 +13,11 @@ class LED {
     return Boolean(this.led.readSync());
   }
 
-  on() {
+  turnOn() {
     this.led.writeSync(Gpio.HIGH);
   }
 
-  off() {
+  turnOff() {
     this.led.writeSync(Gpio.LOW);
   }
 

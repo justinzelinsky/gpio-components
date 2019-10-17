@@ -12,7 +12,7 @@ describe('Test LED', () => {
 
     expect(led.isOn()).toBeFalsy();
 
-    led.on();
+    led.turnOn();
 
     expect(led.isOn()).toBeTruthy();
   });

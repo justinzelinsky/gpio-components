@@ -9,9 +9,9 @@ export class LED {
 
   isOn(): boolean;
 
-  on(): void;
+  turnOn(): void;
 
-  off(): void;
+  turnOff(): void;
 
   cleanUp(): void;
 }
