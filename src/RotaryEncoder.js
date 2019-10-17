@@ -3,13 +3,13 @@ const Gpio = require('onoff').Gpio;
 const { noop } = require('./utils');
 
 class RotaryEncoder {
-  constructor({
+  constructor(
     pinA,
     pinB,
     onIncrement = noop,
     onDecrement = noop,
     onAlways = noop
-  }) {
+  ) {
     if (typeof pinA !== 'number') {
       throw new Error(`Invalid pin A ${pinA} -- must be a number.`);
     }
