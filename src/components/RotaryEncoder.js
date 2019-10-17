@@ -1,8 +1,18 @@
 const Gpio = require('onoff').Gpio;
 
-const { noop } = require('./utils');
+const { noop } = require('../utils');
 
 class RotaryEncoder {
+  /**
+   * Create an instance of a Rotary Encoder
+   *
+   * @constructor
+   * @param {number} pinA The GPIO pin for the first Rotary Encoder pin
+   * @param {number} pinB The GPIO pin for the second Rotary Encoder pin
+   * @param {function} onIncrement Callback function for when the Rotary Encoder is turned clockwise
+   * @param {function} onDecrement Callback function for when the Rotary Encoder is turned counterclockwise
+   * @param {function} onAlways Callback function for when the Rotary Encoder is turned either direction
+   */
   constructor(
     pinA,
     pinB,
@@ -25,6 +35,11 @@ class RotaryEncoder {
     this.onAlways = onAlways;
   }
 
+  /**
+   * Begin watching the Rotary Encoder for any interactions
+   *
+   * @public
+   */
   watch() {
     let prevA = null;
     let secondTurn = false;
@@ -57,6 +72,11 @@ class RotaryEncoder {
     this.encoderA.watch(watchFunc);
   }
 
+  /**
+   * Cleans up the Rotary Encoder when finished
+   *
+   * @public
+   */
   cleanUp() {
     this.encoderA.unexport();
     this.encoderB.unexport();

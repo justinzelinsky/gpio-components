@@ -1,6 +1,15 @@
 const Gpio = require('onoff').Gpio;
 
 class SevenSegmentDisplay {
+  /**
+   * Create an instance of a Rotary Encoder
+   *
+   * @constructor
+   * @param {number} pinZero The GPIO pin for position 2^0 in the Seven Segment Display
+   * @param {number} pinOne The GPIO pin for position 2^1 in the Seven Segment Display
+   * @param {number} pinTwo The GPIO pin for position 2^2 in the Seven Segment Display
+   * @param {number} piNThree The GPIO pin for position 2^3 in the Seven Segment Display
+   */
   constructor(pinZero, pinOne, pinTwo, pinThree) {
     if (typeof pinZero !== 'number') {
       throw new Error(
@@ -28,6 +37,13 @@ class SevenSegmentDisplay {
     this.three = new Gpio(pinThree, 'out');
   }
 
+  /**
+   * Set the Seven Segment Display to a number
+   *
+   * @public
+   * @param {number} number The number to display
+   * @returns {Promise} A promise which will resolve once the display is set
+   */
   async setDisplay(number) {
     return Promise.all([
       this.zero.write(number % 2),
@@ -37,6 +53,12 @@ class SevenSegmentDisplay {
     ]);
   }
 
+  /**
+   * Get the binary representation of the current number displayed
+   *
+   * @public
+   * @returns {string} A binary representation of the current number displayed
+   */
   getBinaryRepresentation() {
     const zeroNum = this.zero.readSync();
     const oneNum = this.one.readSync();
@@ -45,6 +67,11 @@ class SevenSegmentDisplay {
     return `${threeNum}${twoNum}${oneNum}${zeroNum}`;
   }
 
+  /**
+   * Cleans up the Rotary Encoder when finished
+   *
+   * @public
+   */
   cleanUp() {
     this.zero.unexport();
     this.one.unexport();
