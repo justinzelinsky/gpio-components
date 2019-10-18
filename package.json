@@ -14,7 +14,11 @@
     "gpio",
     "components",
     "hardware",
-    "raspberry pi"
+    "raspberry pi",
+    "led",
+    "switch",
+    "seven segment display",
+    "rotary encoder"
   ],
   "author": "Justin Zelinsky",
   "license": "MIT",
