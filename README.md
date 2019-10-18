@@ -170,10 +170,10 @@ const mySwitch = new Switch(1, onPress, options);
 
 ### switchOptions
 
-| Option            | Type                                     | Description                                                   |
-| ----------------- | ---------------------------------------- | ------------------------------------------------------------- |
-| `edge`            | `"none" | "rising" | "falling" | "both"` | Specify the interrupt generating edge or edges for the switch |
-| `debounceTimeout` | `number`                                 | Specify the number of milliseconds for delaying a callback    |
+| Option            | Type                                                  | Description                                                   |
+| ----------------- | ----------------------------------------------------- | ------------------------------------------------------------- |
+| `edge`            | "none" &#124; "rising" &#124; "falling" &#124; "both" | Specify the interrupt generating edge or edges for the switch |
+| `debounceTimeout` | `number`                                              | Specify the number of milliseconds for delaying a callback    |
 
 ## Special Thanks
 
