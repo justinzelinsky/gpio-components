@@ -6,6 +6,10 @@
   "scripts": {
     "test": "jest --coverage"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/justinzelinsky/gpio-components.git"
+  },
   "keywords": [
     "gpio",
     "components",
