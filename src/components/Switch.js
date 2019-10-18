@@ -1,10 +1,8 @@
 const Gpio = require('onoff').Gpio;
 
 const defaultSwitchOptions = {
-  edge: 'rising',
-  options: {
-    debounceTimeout: 10
-  }
+  debounceTimeout: 10,
+  edge: 'rising'
 };
 
 class Switch {
@@ -21,12 +19,9 @@ class Switch {
       throw new Error(`Invalid switch pin ${pin} -- must be a number.`);
     }
 
-    this.switch = new Gpio(
-      pin,
-      'in',
-      switchOptions.edge,
-      switchOptions.options
-    );
+    const { edge, debounceTimeout } = defaultSwitchOptions;
+
+    this.switch = new Gpio(pin, 'in', edge, { debounceTimeout });
     this.onPress = onPress;
   }
 

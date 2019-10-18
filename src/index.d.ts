@@ -1,7 +1,6 @@
 export type Options = {
+  edge?: string;
   debounceTimeout?: number;
-  activeLow?: boolean;
-  reconfigureDirection?: boolean;
 };
 
 export class LED {

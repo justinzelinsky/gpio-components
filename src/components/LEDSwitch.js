@@ -2,10 +2,8 @@ const LED = require('./LED');
 const Switch = require('./Switch');
 
 const defaultSwitchOptions = {
-  edge: 'rising',
-  options: {
-    debounceTimeout: 10
-  }
+  debounceTimeout: 10,
+  edge: 'rising'
 };
 
 class LEDSwitch {

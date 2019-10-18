@@ -41,15 +41,15 @@ class SevenSegmentDisplay {
    * Set the Seven Segment Display to a number
    *
    * @public
-   * @param {number} number The number to display
+   * @param {number} displayNumber The number to display
    * @returns {Promise} A promise which will resolve once the display is set
    */
-  async setDisplay(number) {
+  async setDisplay(displayNumber) {
     return Promise.all([
-      this.zero.write(number % 2),
-      this.one.write((number >> 1) % 2),
-      this.two.write((number >> 2) % 2),
-      this.three.write((number >> 3) % 2)
+      this.zero.write(displayNumber % 2),
+      this.one.write((displayNumber >> 1) % 2),
+      this.two.write((displayNumber >> 2) % 2),
+      this.three.write((displayNumber >> 3) % 2)
     ]);
   }
 
