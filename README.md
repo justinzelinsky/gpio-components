@@ -7,6 +7,8 @@
 
 A collection of GPIO components written in JavaScript. Supports Linux boards like the Raspberry Pi or BeagleBone.
 
+_NOTE_ Not ready for production usage (yet ;) )
+
 ## Contents
 
 - [Requirements](#requirements)
