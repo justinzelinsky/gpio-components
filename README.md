@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/gpio-components.svg)](https://www.npmjs.com/package/gpio-components)
 [![Build Status](https://travis-ci.com/justinzelinsky/gpio-components.svg?branch=master)](https://travis-ci.com/justinzelinsky/gpio-components)
+![npm bundle size](https://img.shields.io/bundlephobia/min/gpio-components)
 [![codecov](https://codecov.io/gh/justinzelinsky/gpio-components/branch/master/graph/badge.svg)](https://codecov.io/gh/justinzelinsky/gpio-components)
 ![npm](https://img.shields.io/npm/dm/gpio-components)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
