@@ -18,7 +18,8 @@
     "led",
     "switch",
     "seven segment display",
-    "rotary encoder"
+    "rotary encoder",
+    "multiplexer"
   ],
   "author": "Justin Zelinsky",
   "license": "MIT",
