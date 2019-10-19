@@ -1,4 +1,4 @@
 __mocks__
-tests
+__tests__
 .travis.yml
 coverage

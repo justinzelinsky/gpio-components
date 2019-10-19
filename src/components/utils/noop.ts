@@ -1,3 +1,3 @@
 const noop = () => {};
 
-module.exports = noop;
+export default noop;

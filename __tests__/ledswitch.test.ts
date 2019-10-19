@@ -1,4 +1,4 @@
-const { LEDSwitch } = require('../src');
+import { LEDSwitch } from '../src';
 
 describe('Test LEDSwitch', () => {
   it('should have the led disabled by default', () => {
@@ -13,7 +13,7 @@ describe('Test LEDSwitch', () => {
     ledSwitch.watch();
 
     setTimeout(() => {
-      expect(ledSwitch.isOn()).toBeTruth();
+      expect(ledSwitch.isOn()).toBeTruthy();
     }, 0);
   });
 });

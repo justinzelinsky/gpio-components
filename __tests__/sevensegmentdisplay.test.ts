@@ -1,27 +1,9 @@
-const { SevenSegmentDisplay } = require('../src');
+import { SevenSegmentDisplay } from '../src';
 
 describe('Test Seven Segment Display', () => {
   it('should be zero by default', () => {
     const display = new SevenSegmentDisplay(1, 2, 3, 4);
     expect(display.getBinaryRepresentation()).toEqual('0000');
-  });
-
-  it('should throw an exception when trying to initialize with a non number pin', () => {
-    expect(() => {
-      const display = new SevenSegmentDisplay('1', 2, 3, 4);
-    }).toThrow(Error);
-
-    expect(() => {
-      const display = new SevenSegmentDisplay(1, '2', 3, 4);
-    }).toThrow(Error);
-
-    expect(() => {
-      const display = new SevenSegmentDisplay(1, 2, '3', 4);
-    }).toThrow(Error);
-
-    expect(() => {
-      const display = new SevenSegmentDisplay(1, 2, 3, '4');
-    }).toThrow(Error);
   });
 
   it('should correctly set the values for numbers', async () => {

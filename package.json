@@ -2,8 +2,10 @@
   "name": "gpio-components",
   "version": "0.0.4",
   "description": "A collection of hardware components to use for any linux-based, GPIO-compatible devices.",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "jest --coverage"
   },
   "repository": {
@@ -19,7 +21,8 @@
     "switch",
     "seven segment display",
     "rotary encoder",
-    "multiplexer"
+    "multiplexer",
+    "typescript"
   ],
   "author": "Justin Zelinsky",
   "license": "MIT",
@@ -27,6 +30,9 @@
     "onoff": "^5.0.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "@types/jest": "^24.0.19",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
   }
 }

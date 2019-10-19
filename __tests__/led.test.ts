@@ -1,16 +1,10 @@
-const { LED } = require('../src');
+import { LED } from '../src';
 
 describe('Test LED', () => {
   it('should be off when initialized', () => {
     const led = new LED(1);
 
     expect(led.isOn()).toBeFalsy();
-  });
-
-  it('should throw an exception when trying to initialize with a non number pin', () => {
-    expect(() => {
-      const led = new LED('Hello');
-    }).toThrow(Error);
   });
 
   it('should be able to turn on', () => {
