@@ -2,18 +2,22 @@ import { Gpio, BinaryValue } from 'onoff';
 
 import { getBinaryValue } from 'components/utils';
 
+export type SevenSegmentDisplayConfig = {
+  pinZero: number;
+  pinOne: number;
+  pinTwo: number;
+  pinThree: number;
+};
+
 export default class SevenSegmentDisplay {
   zero: Gpio;
   one: Gpio;
   two: Gpio;
   three: Gpio;
 
-  constructor(
-    pinZero: number,
-    pinOne: number,
-    pinTwo: number,
-    pinThree: number
-  ) {
+  constructor(config: SevenSegmentDisplayConfig) {
+    const { pinZero, pinOne, pinTwo, pinThree } = config;
+
     this.zero = new Gpio(pinZero, 'out');
     this.one = new Gpio(pinOne, 'out');
     this.two = new Gpio(pinTwo, 'out');

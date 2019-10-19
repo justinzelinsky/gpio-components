@@ -5,8 +5,12 @@ jest.useFakeTimers();
 describe('Test Switch', () => {
   it('should respond to being pressed', () => {
     let isPressed = false;
+    const switchConfig = {
+      pin: 1,
+      onPress: () => (isPressed = true)
+    };
 
-    const switchButton = new Switch(1, () => (isPressed = true));
+    const switchButton = new Switch(switchConfig);
 
     switchButton.watch();
 
@@ -16,8 +20,12 @@ describe('Test Switch', () => {
   });
 
   it('should cleanup properly', () => {
-    const switchButton = new Switch(1, () => {});
+    const switchConfig = {
+      pin: 1,
+      onPress: () => {}
+    };
 
+    const switchButton = new Switch(switchConfig);
     expect(() => switchButton.cleanUp()).not.toThrow(Error);
   });
 });

@@ -1,4 +1,4 @@
-import { Gpio, BinaryValue } from 'onoff';
+import { BinaryValue, Gpio } from 'onoff';
 
 import { getBinaryValue } from 'components/utils';
 

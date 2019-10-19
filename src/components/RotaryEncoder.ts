@@ -2,6 +2,14 @@ import { BinaryValue, Gpio, ValueCallback } from 'onoff';
 
 import { noop } from './utils';
 
+export type RotaryEncoderConfig = {
+  onAlways?: Function;
+  onDecrement?: Function;
+  onIncrement?: Function;
+  pinA: number;
+  pinB: number;
+};
+
 export default class RotaryEncoder {
   encoderA: Gpio;
   encoderB: Gpio;
@@ -9,13 +17,15 @@ export default class RotaryEncoder {
   onDecrement: Function;
   onAlways: Function;
 
-  constructor(
-    pinA: number,
-    pinB: number,
-    onIncrement: Function = noop,
-    onDecrement: Function = noop,
-    onAlways: Function = noop
-  ) {
+  constructor(config: RotaryEncoderConfig) {
+    const {
+      onAlways = noop,
+      onDecrement = noop,
+      onIncrement = noop,
+      pinA,
+      pinB
+    } = config;
+
     this.encoderA = new Gpio(pinA, 'in', 'both');
     this.encoderB = new Gpio(pinB, 'in', 'both');
     this.onIncrement = onIncrement;

@@ -1,10 +1,16 @@
-import { Gpio } from 'onoff';
+import { BinaryValue, Gpio } from 'onoff';
+
+import { getBinaryValue } from 'components/utils';
+
+export type LEDConfig = {
+  pin: number;
+};
 
 export default class LED {
   led: Gpio;
 
-  constructor(pin: number) {
-    this.led = new Gpio(pin, 'out');
+  constructor(config: LEDConfig) {
+    this.led = new Gpio(config.pin, 'out');
   }
 
   isOn(): boolean {
@@ -20,9 +26,9 @@ export default class LED {
   }
 
   toggle(): boolean {
-    const toggleState: number = this.led.readSync() ^ 1;
+    const toggleState: BinaryValue = getBinaryValue(this.led.readSync() ^ 1);
 
-    this.led.writeSync(toggleState ? Gpio.HIGH : Gpio.LOW);
+    this.led.writeSync(toggleState);
 
     return Boolean(toggleState);
   }

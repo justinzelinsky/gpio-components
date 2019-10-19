@@ -3,23 +3,38 @@ import Switch, { defaultSwitchOptions, SwitchOptions } from './Switch';
 
 export type OnPressCallback = (isOn: boolean) => void;
 
+export type LEDSwitchConfig = {
+  ledPin: number;
+  onPress: OnPressCallback;
+  switchOptions?: SwitchOptions;
+  switchPin: number;
+};
+
 export default class LEDSwitch {
   led: LED;
   switch: Switch;
 
-  constructor(
-    ledPin: number,
-    switchPin: number,
-    onPress: OnPressCallback,
-    switchOptions: SwitchOptions = defaultSwitchOptions
-  ) {
+  constructor(config: LEDSwitchConfig) {
+    const {
+      ledPin,
+      onPress,
+      switchOptions = defaultSwitchOptions,
+      switchPin
+    } = config;
+
     const onSwitchPress = () => {
       const newState: boolean = this.led.toggle();
       onPress(newState);
     };
 
+    const switchConfig = {
+      pin: switchPin,
+      onPress: onSwitchPress,
+      switchOptions
+    };
+
     this.led = new LED(ledPin);
-    this.switch = new Switch(switchPin, onSwitchPress, switchOptions);
+    this.switch = new Switch(switchConfig);
   }
 
   watch(): void {

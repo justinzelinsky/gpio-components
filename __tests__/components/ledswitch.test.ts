@@ -4,13 +4,23 @@ jest.useFakeTimers();
 
 describe('Test LEDSwitch', () => {
   it('should have the led disabled by default', () => {
-    const ledSwitch = new LEDSwitch(1, 2, () => {});
+    const ledSwitchConfig = {
+      ledPin: 1,
+      switchPin: 2,
+      onPress: () => {}
+    };
+    const ledSwitch = new LEDSwitch(ledSwitchConfig);
 
     expect(ledSwitch.isOn()).toBeFalsy();
   });
 
   it('should turn on the led when pressed', () => {
-    const ledSwitch = new LEDSwitch(1, 2, () => {});
+    const ledSwitchConfig = {
+      ledPin: 1,
+      switchPin: 2,
+      onPress: () => {}
+    };
+    const ledSwitch = new LEDSwitch(ledSwitchConfig);
 
     ledSwitch.watch();
 
@@ -20,7 +30,12 @@ describe('Test LEDSwitch', () => {
   });
 
   it('should cleanup properly', () => {
-    const ledSwitch = new LEDSwitch(1, 2, () => {});
+    const ledSwitchConfig = {
+      ledPin: 1,
+      switchPin: 2,
+      onPress: () => {}
+    };
+    const ledSwitch = new LEDSwitch(ledSwitchConfig);
 
     expect(() => ledSwitch.cleanUp()).not.toThrow(Error);
   });

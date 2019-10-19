@@ -5,6 +5,12 @@ export type SwitchOptions = {
   edge?: Edge;
 };
 
+export type SwitchConfig = {
+  onPress: Function;
+  pin: number;
+  switchOptions?: SwitchOptions;
+};
+
 export const defaultSwitchOptions: SwitchOptions = {
   debounceTimeout: 10,
   edge: 'rising'
@@ -14,11 +20,9 @@ export default class Switch {
   switch: Gpio;
   onPress: Function;
 
-  constructor(
-    pin: number,
-    onPress: Function,
-    switchOptions: SwitchOptions = defaultSwitchOptions
-  ) {
+  constructor(config: SwitchConfig) {
+    const { onPress, pin, switchOptions = defaultSwitchOptions } = config;
+
     const { debounceTimeout, edge } = switchOptions;
 
     this.switch = new Gpio(pin, 'in', edge, { debounceTimeout });

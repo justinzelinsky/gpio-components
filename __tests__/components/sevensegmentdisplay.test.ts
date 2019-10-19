@@ -2,12 +2,25 @@ import { SevenSegmentDisplay } from '../../src';
 
 describe('Test Seven Segment Display', () => {
   it('should be zero by default', () => {
-    const display = new SevenSegmentDisplay(1, 2, 3, 4);
+    const sevenSegmentDisplayConfig = {
+      pinZero: 1,
+      pinOne: 2,
+      pinTwo: 3,
+      pinThree: 4
+    };
+
+    const display = new SevenSegmentDisplay(sevenSegmentDisplayConfig);
     expect(display.getBinaryRepresentation()).toEqual('0000');
   });
 
   it('should correctly set the values for numbers', async () => {
-    const display = new SevenSegmentDisplay(1, 2, 3, 4);
+    const sevenSegmentDisplayConfig = {
+      pinZero: 1,
+      pinOne: 2,
+      pinTwo: 3,
+      pinThree: 4
+    };
+    const display = new SevenSegmentDisplay(sevenSegmentDisplayConfig);
 
     await display.setDisplay(1);
     expect(display.getBinaryRepresentation()).toEqual('0001');
@@ -32,7 +45,14 @@ describe('Test Seven Segment Display', () => {
   });
 
   it('should cleanup properly', () => {
-    const display = new SevenSegmentDisplay(1, 2, 3, 4);
+    const sevenSegmentDisplayConfig = {
+      pinZero: 1,
+      pinOne: 2,
+      pinTwo: 3,
+      pinThree: 4
+    };
+
+    const display = new SevenSegmentDisplay(sevenSegmentDisplayConfig);
 
     expect(() => display.cleanUp()).not.toThrow(Error);
   });
