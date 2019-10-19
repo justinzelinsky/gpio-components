@@ -1,6 +1,6 @@
 {
   "name": "gpio-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A collection of hardware components to use for any linux-based, GPIO-compatible devices.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
