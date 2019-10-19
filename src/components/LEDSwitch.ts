@@ -27,13 +27,17 @@ export default class LEDSwitch {
       onPress(newState);
     };
 
+    const ledConfig = {
+      pin: ledPin
+    };
+
     const switchConfig = {
       pin: switchPin,
       onPress: onSwitchPress,
       switchOptions
     };
 
-    this.led = new LED(ledPin);
+    this.led = new LED(ledConfig);
     this.switch = new Switch(switchConfig);
   }
 
