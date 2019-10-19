@@ -1,5 +1,7 @@
 import { Switch } from '../src';
 
+jest.useFakeTimers();
+
 describe('Test Switch', () => {
   it('should respond to being pressed', () => {
     let isPressed = false;
@@ -8,9 +10,9 @@ describe('Test Switch', () => {
 
     switchButton.watch();
 
-    setTimeout(() => {
-      expect(isPressed).toBeTruthy();
-    }, 0);
+    jest.runOnlyPendingTimers();
+
+    expect(isPressed).toBeTruthy();
   });
 
   it('should cleanup properly', () => {

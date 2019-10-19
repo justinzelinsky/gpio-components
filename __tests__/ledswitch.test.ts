@@ -1,5 +1,7 @@
 import { LEDSwitch } from '../src';
 
+jest.useFakeTimers();
+
 describe('Test LEDSwitch', () => {
   it('should have the led disabled by default', () => {
     const ledSwitch = new LEDSwitch(1, 2, () => {});
@@ -12,9 +14,9 @@ describe('Test LEDSwitch', () => {
 
     ledSwitch.watch();
 
-    setTimeout(() => {
-      expect(ledSwitch.isOn()).toBeTruthy();
-    }, 0);
+    jest.runOnlyPendingTimers();
+
+    expect(ledSwitch.isOn()).toBeTruthy();
   });
 
   it('should cleanup properly', () => {
