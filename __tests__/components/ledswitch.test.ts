@@ -1,4 +1,4 @@
-import { LEDSwitch } from '../src';
+import { LEDSwitch } from '../../src';
 
 jest.useFakeTimers();
 

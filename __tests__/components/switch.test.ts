@@ -1,4 +1,4 @@
-import { Switch } from '../src';
+import { Switch } from '../../src';
 
 jest.useFakeTimers();
 

@@ -1,4 +1,4 @@
-import { LED } from '../src';
+import { LED } from '../../src';
 
 describe('Test LED', () => {
   it('should be off when initialized', () => {

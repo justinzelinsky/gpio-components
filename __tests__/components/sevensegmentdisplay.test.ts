@@ -1,4 +1,4 @@
-import { SevenSegmentDisplay } from '../src';
+import { SevenSegmentDisplay } from '../../src';
 
 describe('Test Seven Segment Display', () => {
   it('should be zero by default', () => {
