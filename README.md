@@ -34,7 +34,7 @@ NodeJS versions 6, 8, 10, or 12.
 ```javascript
 const { LED } = require('gpio-components');
 
-const led = new LED(1);
+const led = new LED({ pin: 1 });
 
 const isOn = led.isOn(); // false
 
@@ -52,12 +52,14 @@ const isOn = led.isOn(); // true
 ```javascript
 const { LED } = require('gpio-components');
 
-const led = new LED(1);
+const led = new LED({ pin: 1 });
 ```
 
-| Parameter | Type     | Description              |
-| --------- | -------- | ------------------------ |
-| `pin`     | `number` | The GPIO pin for the LED |
+`LEDConfig`:
+
+| Property | Type     | Description              |
+| -------- | -------- | ------------------------ |
+| `pin`    | `number` | The GPIO pin for the LED |
 
 #### Methods
 
@@ -75,12 +77,18 @@ const led = new LED(1);
 ```javascript
 const { LEDSwitch } = require('gpio-components');
 
-// ...
+const ledSwitchConfig = {
+  ledPin: 1,
+  switchPin: 2,
+  onPress
+};
 
-const ledSwitch = new LEDSwitch(1, 2, onPress, {});
+const ledSwitch = new LEDSwitch(ledSwitchConfig);
 ```
 
-| Parameter       | Type       | Description                                                |
+`LEDSwitchConfig`:
+
+| Property        | Type       | Description                                                |
 | --------------- | ---------- | ---------------------------------------------------------- |
 | `ledPin`        | `number`   | The GPIO pin for the LED                                   |
 | `switchPin`     | `number`   | The GPIO pin for the switch                                |
@@ -102,12 +110,20 @@ const ledSwitch = new LEDSwitch(1, 2, onPress, {});
 ```javascript
 const { RotaryEncoder } = require('gpio-components');
 
-// ...
+const rotaryEncoderConfig = {
+  pinA: 1,
+  pinB: 2,
+  onIncrement,
+  onDecrement,
+  onAlways
+};
 
-const encoder = new RotaryEncoder(1, 2, onIncrement, onDecrement, onAlways);
+const encoder = new RotaryEncoder(rotaryEncoderConfig);
 ```
 
-| Parameter     | Type       | Description                                                                           |
+`RotaryEncoderConfig`:
+
+| Property      | Type       | Description                                                                           |
 | ------------- | ---------- | ------------------------------------------------------------------------------------- |
 | `pinA`        | `number`   | The GPIO pin for the first pin for the rotary encoder                                 |
 | `pinB`        | `number`   | The GPIO pin for the second pin for the rotary encoder                                |
@@ -129,10 +145,19 @@ const encoder = new RotaryEncoder(1, 2, onIncrement, onDecrement, onAlways);
 ```javascript
 const { SevenSegmentDisplay } = require('gpio-components');
 
-const display = new SevenSegmentDisplay(1, 2, 3, 4);
+const sevenSegmentDisplayConfig = {
+  pinZero: 1,
+  pinOne: 2,
+  pinTwo: 3,
+  pinThree: 4
+};
+
+const display = new SevenSegmentDisplay(sevenSegmentDisplayConfig);
 ```
 
-| Parameter  | Type     | Description                                                        |
+`SevenSegmentDisplayConfig`:
+
+| Property   | Type     | Description                                                        |
 | ---------- | -------- | ------------------------------------------------------------------ |
 | `pinZero`  | `number` | The pin for the display which represents 2^0 digit of the display. |
 | `pinOne`   | `number` | The pin for the display which represents 2^1 digit of the display. |
@@ -154,10 +179,17 @@ const display = new SevenSegmentDisplay(1, 2, 3, 4);
 ```javascript
 const { Switch } = require('gpio-components');
 
-const mySwitch = new Switch(1, onPress, options);
+const switchConfig = {
+  pin: 1,
+  onPress
+};
+
+const mySwitch = new Switch(switchConfig);
 ```
 
-| Parameter       | Type       | Description                                                |
+`SwitchConfig`:
+
+| Property        | Type       | Description                                                |
 | --------------- | ---------- | ---------------------------------------------------------- |
 | `pin`           | `number`   | The GPIO pin for the switch                                |
 | `onPress`       | `function` | The callback function for when the switch is pressed       |
@@ -184,7 +216,7 @@ Each component has a function called `cleanUp` which should only be called when 
 ```javascript
 const { LED } = require('gpio-components');
 
-const led = new LED(1);
+const led = new LED({ pin: 1 });
 
 // ...
 
