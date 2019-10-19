@@ -1,15 +1,17 @@
-import { Gpio } from 'onoff';
+import { Gpio, BinaryValue } from 'onoff';
 
 import { getBinaryValue } from 'components/utils';
 
 type SelectStates = {
-  [key: number]: number;
+  [key: number]: BinaryValue;
 };
+
+export type OnInterruptCallback = (switchIndex: number) => void;
 
 export default class Multiplexer {
   input: Gpio;
   outputs: Gpio[];
-  onInterrupt: Function;
+  onInterrupt: OnInterruptCallback;
   timeoutId: number | undefined;
   numSwitches: number;
 
@@ -17,7 +19,7 @@ export default class Multiplexer {
     inputPin: number,
     outputPins: number[],
     numSwitches: number,
-    onInterrupt: Function
+    onInterrupt: OnInterruptCallback
   ) {
     this.input = new Gpio(inputPin, 'in');
     this.outputs = outputPins.map(pin => new Gpio(pin, 'out'));
@@ -30,10 +32,10 @@ export default class Multiplexer {
 
     const previousSelectStates: SelectStates = {};
     for (let i = 0; i < numSwitches; i++) {
-      previousSelectStates[i] = 1;
+      previousSelectStates[i] = Gpio.HIGH;
     }
 
-    let selectIndex = 0;
+    let selectIndex: number = 0;
 
     const checkSwitches = () => {
       Promise.all(
@@ -41,10 +43,11 @@ export default class Multiplexer {
           output.write(getBinaryValue((selectIndex >> idx) % 2));
         })
       ).then(() => {
-        const selectState = input.readSync();
-        const previousSelectState = previousSelectStates[selectIndex];
+        const selectState: BinaryValue = input.readSync();
+        const previousSelectState: BinaryValue =
+          previousSelectStates[selectIndex];
 
-        if (selectState !== previousSelectState && selectState === 0) {
+        if (selectState !== previousSelectState && selectState === Gpio.LOW) {
           this.onInterrupt(selectIndex);
         }
 

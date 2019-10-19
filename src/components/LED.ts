@@ -1,4 +1,4 @@
-import { BinaryValue, Gpio } from 'onoff';
+import { Gpio } from 'onoff';
 
 export default class LED {
   led: Gpio;

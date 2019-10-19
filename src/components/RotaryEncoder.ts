@@ -1,4 +1,4 @@
-import { Gpio, ValueCallback } from 'onoff';
+import { BinaryValue, Gpio, ValueCallback } from 'onoff';
 
 import { noop } from './utils';
 
@@ -28,8 +28,8 @@ export default class RotaryEncoder {
     let secondTurn: boolean = false;
 
     const watchFunc: ValueCallback = (err: Error | null | undefined) => {
-      const a = this.encoderA.readSync();
-      const b = this.encoderB.readSync();
+      const a: BinaryValue = this.encoderA.readSync();
+      const b: BinaryValue = this.encoderB.readSync();
 
       if (err) {
         throw err;

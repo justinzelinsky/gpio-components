@@ -1,6 +1,8 @@
 import LED from './LED';
 import Switch, { defaultSwitchOptions, SwitchOptions } from './Switch';
 
+export type OnPressCallback = (isOn: boolean) => void;
+
 export default class LEDSwitch {
   led: LED;
   switch: Switch;
@@ -8,7 +10,7 @@ export default class LEDSwitch {
   constructor(
     ledPin: number,
     switchPin: number,
-    onPress: Function,
+    onPress: OnPressCallback,
     switchOptions: SwitchOptions = defaultSwitchOptions
   ) {
     const onSwitchPress = () => {
