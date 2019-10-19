@@ -30,4 +30,10 @@ describe('Test Seven Segment Display', () => {
     await display.setDisplay(7);
     expect(display.getBinaryRepresentation()).toEqual('0111');
   });
+
+  it('should cleanup properly', () => {
+    const display = new SevenSegmentDisplay(1, 2, 3, 4);
+
+    expect(() => display.cleanUp()).not.toThrow(Error);
+  });
 });

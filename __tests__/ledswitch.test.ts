@@ -16,4 +16,10 @@ describe('Test LEDSwitch', () => {
       expect(ledSwitch.isOn()).toBeTruthy();
     }, 0);
   });
+
+  it('should cleanup properly', () => {
+    const ledSwitch = new LEDSwitch(1, 2, () => {});
+
+    expect(() => ledSwitch.cleanUp()).not.toThrow(Error);
+  });
 });

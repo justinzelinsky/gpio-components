@@ -41,6 +41,8 @@ class Gpio {
       }, 500);
     });
   }
+
+  unexport() {}
 }
 
 Gpio.HIGH = 1;

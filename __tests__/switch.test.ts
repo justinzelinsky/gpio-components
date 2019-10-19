@@ -12,4 +12,10 @@ describe('Test Switch', () => {
       expect(isPressed).toBeTruthy();
     }, 0);
   });
+
+  it('should cleanup properly', () => {
+    const switchButton = new Switch(1, () => {});
+
+    expect(() => switchButton.cleanUp()).not.toThrow(Error);
+  });
 });

@@ -54,4 +54,10 @@ describe('Test LED', () => {
 
     expect(led.isOn()).toBeTruthy();
   });
+
+  it('should cleanup properly', () => {
+    const led = new LED(1);
+
+    expect(() => led.cleanUp()).not.toThrow(Error);
+  });
 });
