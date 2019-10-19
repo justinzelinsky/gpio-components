@@ -18,6 +18,7 @@ _NOTE_ Not ready for production usage (yet ;) )
 - [Installation](#installation)
 - [Usage](#usage)
 - [Documentation](#documentation)
+- [Notes](#notes)
 - [Special Thanks](#special-thanks)
 
 ## Requirements
@@ -175,6 +176,22 @@ const mySwitch = new Switch(1, onPress, options);
 | ----------------- | ----------------------------------------------------- | ------------------------------------------------------------- |
 | `edge`            | "none" &#124; "rising" &#124; "falling" &#124; "both" | Specify the interrupt generating edge or edges for the switch |
 | `debounceTimeout` | `number`                                              | Specify the number of milliseconds for delaying a callback    |
+
+## Notes
+
+Each component has a function called `cleanUp` which should only be called when the program is terminated or if the component is no longer expected to be interacted with. Generally, you'd use it like this:
+
+```javascript
+const { LED } = require('gpio-components');
+
+const led = new LED(1);
+
+// ...
+
+process.on('SIGINT', _ => {
+  led.cleanUp();
+});
+```
 
 ## Special Thanks
 
