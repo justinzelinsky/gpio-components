@@ -1,68 +1,83 @@
-export type Options = {
-  edge?: string;
-  debounceTimeout?: number;
-};
+namespace GpioComponents {
+  export type Options = {
+    edge?: string;
+    debounceTimeout?: number;
+  };
 
-export class LED {
-  constructor(pin: number);
+  export class LED {
+    constructor(pin: number);
 
-  isOn(): boolean;
+    isOn(): boolean;
 
-  turnOn(): void;
+    turnOn(): void;
 
-  turnOff(): void;
+    turnOff(): void;
 
-  cleanUp(): void;
-}
+    cleanUp(): void;
+  }
 
-export class LEDSwitch {
-  constructor(
-    ledPin: number,
-    switchPin: number,
-    onPress: (value: number) => void,
-    switchOptions?: Options
-  );
+  export class LEDSwitch {
+    constructor(
+      ledPin: number,
+      switchPin: number,
+      onPress: (value: number) => void,
+      switchOptions?: Options
+    );
 
-  watch(): void;
+    watch(): void;
 
-  isOn(): boolean;
+    isOn(): boolean;
 
-  cleanUp(): void;
-}
+    cleanUp(): void;
+  }
 
-export class RotaryEncoder {
-  constructor(
-    pinA: number,
-    pinB: number,
-    onIncrement: Function,
-    onDecrement: Function,
-    onAlways: Function
-  );
+  export class Multiplexer {
+    constructor(
+      inputPin: number,
+      outputPins: Array<number>,
+      numSwitches: number,
+      onChange: function
+    );
 
-  watch(): void;
+    watch(): void;
 
-  cleanUp(): void;
-}
+    cleanUp(): void;
+  }
 
-export class SevenSegmentDisplay {
-  constructor(
-    pinZero: number,
-    pinOne: number,
-    pinTwo: number,
-    pinThree: number
-  );
+  export class RotaryEncoder {
+    constructor(
+      pinA: number,
+      pinB: number,
+      onIncrement: Function,
+      onDecrement: Function,
+      onAlways: Function
+    );
 
-  setDisplay(): Promise<void>;
+    watch(): void;
 
-  getBinaryRepresentation(): string;
+    cleanUp(): void;
+  }
 
-  cleanUp(): void;
-}
+  export class SevenSegmentDisplay {
+    constructor(
+      pinZero: number,
+      pinOne: number,
+      pinTwo: number,
+      pinThree: number
+    );
 
-export class Switch {
-  constructor(pin: number, onPress: Function, switchOptions?: Options);
+    setDisplay(): Promise<void>;
 
-  watch(): void;
+    getBinaryRepresentation(): string;
 
-  cleanUp(): void;
+    cleanUp(): void;
+  }
+
+  export class Switch {
+    constructor(pin: number, onPress: Function, switchOptions?: Options);
+
+    watch(): void;
+
+    cleanUp(): void;
+  }
 }
