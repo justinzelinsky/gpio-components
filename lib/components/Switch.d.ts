@@ -1,6 +1,5 @@
-import { Edge, Gpio } from 'onoff';
-export declare type SwitchOptions = {
-    debounceTimeout?: number;
+import { Edge, Gpio, Options } from 'onoff';
+export declare type SwitchOptions = Options & {
     edge?: Edge;
 };
 export declare type SwitchConfig = {

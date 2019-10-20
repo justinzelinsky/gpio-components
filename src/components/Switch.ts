@@ -1,7 +1,6 @@
-import { Edge, Gpio } from 'onoff';
+import { Edge, Gpio, Options } from 'onoff';
 
-export type SwitchOptions = {
-  debounceTimeout?: number;
+export type SwitchOptions = Options & {
   edge?: Edge;
 };
 
@@ -23,9 +22,9 @@ export default class Switch {
   constructor(config: SwitchConfig) {
     const { onPress, pin, switchOptions = defaultSwitchOptions } = config;
 
-    const { debounceTimeout, edge } = switchOptions;
+    const { edge, ...options } = switchOptions;
 
-    this.switch = new Gpio(pin, 'in', edge, { debounceTimeout });
+    this.switch = new Gpio(pin, 'in', edge, options);
     this.onPress = onPress;
   }
 

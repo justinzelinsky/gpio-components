@@ -204,10 +204,12 @@ const mySwitch = new Switch(switchConfig);
 
 ### switchOptions
 
-| Option            | Type                                                  | Description                                                   |
-| ----------------- | ----------------------------------------------------- | ------------------------------------------------------------- |
-| `edge`            | "none" &#124; "rising" &#124; "falling" &#124; "both" | Specify the interrupt generating edge or edges for the switch |
-| `debounceTimeout` | `number`                                              | Specify the number of milliseconds for delaying a callback    |
+| Option                 | Type                                                  | Description                                                                                                                                                                                                   |
+| ---------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeLow`            | `boolean`                                             | (Optional) Specify whether or not the values read from or written to the GPIO should be inverted                                                                                                              |
+| `edge`                 | "none" &#124; "rising" &#124; "falling" &#124; "both" | (Optional) Specify the interrupt generating edge or edges for the switch                                                                                                                                      |
+| `debounceTimeout`      | `number`                                              | (Optional) Specify the number of milliseconds for delaying a callback                                                                                                                                         |
+| `reconfigureDirection` | `boolean`                                             | (Optional) Specify whether the direction foir the GPIO should be reconfigured even though the direction is configured correctly. See [here](https://github.com/fivdi/onoff#gpiogpio-direction--edge--options) |
 
 ## Notes
 

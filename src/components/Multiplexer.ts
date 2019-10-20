@@ -22,9 +22,9 @@ export default class Multiplexer {
     onInterrupt: OnInterruptCallback
   ) {
     this.input = new Gpio(inputPin, 'in');
-    this.outputs = outputPins.map(pin => new Gpio(pin, 'out'));
-    this.onInterrupt = onInterrupt;
     this.numSwitches = numSwitches;
+    this.onInterrupt = onInterrupt;
+    this.outputs = outputPins.map(pin => new Gpio(pin, 'out'));
   }
 
   watch(): void {
