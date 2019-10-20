@@ -5,7 +5,7 @@ export type SwitchOptions = Options & {
 };
 
 export type SwitchConfig = {
-  onPress: Function;
+  onPress: SwitchOnPressCallback;
   pin: number;
   switchOptions?: SwitchOptions;
 };
@@ -15,9 +15,11 @@ export const defaultSwitchOptions: SwitchOptions = {
   edge: 'rising'
 };
 
+export type SwitchOnPressCallback = () => void;
+
 export default class Switch {
   switch: Gpio;
-  onPress: Function;
+  onPress: SwitchOnPressCallback;
 
   constructor(config: SwitchConfig) {
     const { onPress, pin, switchOptions = defaultSwitchOptions } = config;

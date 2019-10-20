@@ -3,14 +3,15 @@ export declare type SwitchOptions = Options & {
     edge?: Edge;
 };
 export declare type SwitchConfig = {
-    onPress: Function;
+    onPress: SwitchOnPressCallback;
     pin: number;
     switchOptions?: SwitchOptions;
 };
 export declare const defaultSwitchOptions: SwitchOptions;
+export declare type SwitchOnPressCallback = () => void;
 export default class Switch {
     switch: Gpio;
-    onPress: Function;
+    onPress: SwitchOnPressCallback;
     constructor(config: SwitchConfig);
     watch(): void;
     cleanUp(): void;
