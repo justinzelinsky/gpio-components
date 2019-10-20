@@ -6,21 +6,25 @@ type SelectStates = {
   [key: number]: BinaryValue;
 };
 
+export type MultiplexerConfig = {
+  inputPin: number;
+  numSwitches: number;
+  onInterrupt: OnInterruptCallback;
+  outputPins: number[];
+};
+
 export type OnInterruptCallback = (switchIndex: number) => void;
 
 export default class Multiplexer {
   input: Gpio;
-  outputs: Gpio[];
-  onInterrupt: OnInterruptCallback;
-  timeoutId: number | undefined;
   numSwitches: number;
+  onInterrupt: OnInterruptCallback;
+  outputs: Gpio[];
+  timeoutId: number | undefined;
 
-  constructor(
-    inputPin: number,
-    outputPins: number[],
-    numSwitches: number,
-    onInterrupt: OnInterruptCallback
-  ) {
+  constructor(config: MultiplexerConfig) {
+    const { inputPin, numSwitches, onInterrupt, outputPins } = config;
+
     this.input = new Gpio(inputPin, 'in');
     this.numSwitches = numSwitches;
     this.onInterrupt = onInterrupt;
@@ -61,8 +65,9 @@ export default class Multiplexer {
     checkSwitches();
   }
 
-  cleanUp() {
+  cleanUp(): void {
     clearTimeout(this.timeoutId);
+
     this.input.unexport();
     this.outputs.forEach(output => output.unexport());
   }

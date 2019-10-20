@@ -1,12 +1,18 @@
 import { Gpio } from 'onoff';
+export declare type MultiplexerConfig = {
+    inputPin: number;
+    numSwitches: number;
+    onInterrupt: OnInterruptCallback;
+    outputPins: number[];
+};
 export declare type OnInterruptCallback = (switchIndex: number) => void;
 export default class Multiplexer {
     input: Gpio;
-    outputs: Gpio[];
-    onInterrupt: OnInterruptCallback;
-    timeoutId: number | undefined;
     numSwitches: number;
-    constructor(inputPin: number, outputPins: number[], numSwitches: number, onInterrupt: OnInterruptCallback);
+    onInterrupt: OnInterruptCallback;
+    outputs: Gpio[];
+    timeoutId: number | undefined;
+    constructor(config: MultiplexerConfig);
     watch(): void;
     cleanUp(): void;
 }
