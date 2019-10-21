@@ -37,18 +37,20 @@ export default class RotaryEncoder {
     let prevA: null | number = null;
     let secondTurn: boolean = false;
 
-    const watchFunc: ValueCallback = (err: Error | null | undefined) => {
-      const a: BinaryValue = this.encoderA.readSync();
-      const b: BinaryValue = this.encoderB.readSync();
-
+    const watchFunc: ValueCallback = (
+      err: Error | null | undefined,
+      aValue: BinaryValue
+    ) => {
       if (err) {
         throw err;
       }
 
-      if (prevA !== a && secondTurn) {
+      const bValue: BinaryValue = this.encoderB.readSync();
+
+      if (prevA !== aValue && secondTurn) {
         secondTurn = false;
 
-        if (a !== b) {
+        if (aValue !== bValue) {
           this.onIncrement();
         } else {
           this.onDecrement();
@@ -59,7 +61,7 @@ export default class RotaryEncoder {
         secondTurn = true;
       }
 
-      prevA = a;
+      prevA = aValue;
     };
 
     this.encoderA.watch(watchFunc);
