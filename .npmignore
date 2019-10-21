@@ -2,3 +2,5 @@ __mocks__
 __tests__
 .travis.yml
 coverage
+jest.config.js
+tsconfig.json
