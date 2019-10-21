@@ -12,6 +12,7 @@ export default class SevenSegmentDisplay {
     three: Gpio;
     constructor(config: SevenSegmentDisplayConfig);
     setDisplay(displayNumber: number): Promise<[void, void, void, void]>;
-    getBinaryRepresentation(): string;
+    getValue(): number;
+    getBinaryValue(): string;
     cleanUp(): void;
 }
