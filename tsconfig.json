@@ -8,5 +8,5 @@
     "baseUrl": "./src"
   },
   "include": ["src/**/*"],
-  "exclude": ["__tests__", "lib"]
+  "exclude": ["__tests__", "lib", "__mocks__"]
 }
