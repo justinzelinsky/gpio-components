@@ -1,9 +1,9 @@
 import LED from './LED';
 import Switch, { SwitchOptions } from './Switch';
-export declare type LEDSwitchOnPressCallback = (isOn: boolean) => void;
+export declare type LEDSwitchCallback = (isOn: boolean) => void;
 export declare type LEDSwitchConfig = {
     ledPin: number;
-    onPress: LEDSwitchOnPressCallback;
+    onPress: LEDSwitchCallback;
     switchOptions?: SwitchOptions;
     switchPin: number;
 };
