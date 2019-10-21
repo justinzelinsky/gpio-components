@@ -79,12 +79,13 @@ const led = new LED({ pin: 1 });
 
 #### Methods
 
-| Method    | Description                                 | Parameters | Returns   |
-| --------- | ------------------------------------------- | ---------- | --------- |
-| `isOn`    | Returns whether or not the LED is on or off | _n/a_      | `boolean` |
-| `turnOn`  | Turns the LED on                            | _n/a_      | _n/a_     |
-| `turnOff` | Turns the LED off                           | _n/a_      | _n/a_     |
-| `cleanUp` | Cleans up the LED when finishedne           | _n/a_      | _n/a_     |
+| Method    | Description                                           | Parameters | Returns   |
+| --------- | ----------------------------------------------------- | ---------- | --------- |
+| `isOn`    | Returns whether or not the LED is on or off           | _n/a_      | `boolean` |
+| `toggle`  | Toggles the state of the LED, returning the new state | _n/a_      | `boolean` |
+| `turnOn`  | Turns the LED on                                      | _n/a_      | _n/a_     |
+| `turnOff` | Turns the LED off                                     | _n/a_      | _n/a_     |
+| `cleanUp` | Cleans up the LED when finishedne                     | _n/a_      | _n/a_     |
 
 ### LEDSwitch
 
