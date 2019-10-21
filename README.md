@@ -18,6 +18,11 @@ _NOTE_ Not ready for production usage (yet ;) )
 - [Installation](#installation)
 - [Usage](#usage)
 - [Documentation](#documentation)
+  - [LED](#led)
+  - [LEDSwitch](#ledSwitch)
+  - [RotaryEncoder](#rotaryEncoder)
+  - [SevenSegmentDisplay](#sevenSegmentDisplay)
+  - [Switch](#switch)
 - [Notes](#notes)
 - [Special Thanks](#special-thanks)
 
@@ -32,15 +37,26 @@ NodeJS versions 6, 8, 10, or 12.
 ## Usage
 
 ```javascript
-const { LED } = require('gpio-components');
+const { LED, Switch } = require('gpio-components');
 
-const led = new LED({ pin: 1 });
+const led = new LED({
+  pin: 1
+});
 
 const isOn = led.isOn(); // false
 
 led.turnOn();
 
 const isOn = led.isOn(); // true
+
+// ...
+
+const mySwitch = new Switch({
+  pin: 2,
+  onPress: () => console.log('Pressed!')
+});
+
+mySwitch.watch(); // Begin watching for any interrupts
 ```
 
 ## Documentation
@@ -80,7 +96,7 @@ const { LEDSwitch } = require('gpio-components');
 const ledSwitchConfig = {
   ledPin: 1,
   switchPin: 2,
-  onPress
+  onPress: () => console.log('Pressed!')
 };
 
 const ledSwitch = new LEDSwitch(ledSwitchConfig);
@@ -88,20 +104,20 @@ const ledSwitch = new LEDSwitch(ledSwitchConfig);
 
 `LEDSwitchConfig`:
 
-| Property        | Type       | Description                                                |
-| --------------- | ---------- | ---------------------------------------------------------- |
-| `ledPin`        | `number`   | The GPIO pin for the LED                                   |
-| `switchPin`     | `number`   | The GPIO pin for the switch                                |
-| `onPress`       | `function` | The callback function for when the switch is pressed       |
-| `switchOptions` | `object`   | (Optional) options for the switch. (See below for details) |
+| Property        | Type       | Description                                                                  |
+| --------------- | ---------- | ---------------------------------------------------------------------------- |
+| `ledPin`        | `number`   | The GPIO pin for the LED                                                     |
+| `switchPin`     | `number`   | The GPIO pin for the switch                                                  |
+| `onPress`       | `function` | The callback function for when the switch is pressed                         |
+| `switchOptions` | `object`   | (Optional) options for the switch. (See [below](#switchOptions) for details) |
 
 #### Methods
 
-| Method    | Description                                  | Parameters | Returns        |
-| --------- | -------------------------------------------- | ---------- | -------------- |
-| `watch`   | Watches the Switch for any user interactions | _n/a_      | _n/a_          |
-| `isOn`    | Returns whether or not the LED is on         | _n/a_      | `boolean` isOn |
-| `cleanUp` | Cleans up the LEDSwitch when finished        | _n/a_      | _n/a_          |
+| Method    | Description                                         | Parameters | Returns   |
+| --------- | --------------------------------------------------- | ---------- | --------- |
+| `watch`   | Begin watching the LED Switch for any interruptions | _n/a_      | _n/a_     |
+| `isOn`    | Returns whether or not the LED is on                | _n/a_      | `boolean` |
+| `cleanUp` | Cleans up the LEDSwitch when finished               | _n/a_      | _n/a_     |
 
 ### RotaryEncoder
 
@@ -113,9 +129,9 @@ const { RotaryEncoder } = require('gpio-components');
 const rotaryEncoderConfig = {
   pinA: 1,
   pinB: 2,
-  onIncrement,
-  onDecrement,
-  onAlways
+  onIncrement: () => console.log('Incremented!'),
+  onDecrement: () => console.log('Decremented!'),
+  onAlways: () => console.log('Turned!')
 };
 
 const encoder = new RotaryEncoder(rotaryEncoderConfig);
@@ -133,10 +149,10 @@ const encoder = new RotaryEncoder(rotaryEncoderConfig);
 
 #### Methods
 
-| Method    | Description                                          | Parameters | Returns |
-| --------- | ---------------------------------------------------- | ---------- | ------- |
-| `watch`   | Watches the rotary encoder for any user interactions | _n/a_      | _n/a_   |
-| `cleanUp` | Cleans up the Rotary Encoder when finished           | _n/a_      | _n/a_   |
+| Method    | Description                                              | Parameters | Returns |
+| --------- | -------------------------------------------------------- | ---------- | ------- |
+| `watch`   | Begins watching the rotary encoder for any interruptions | _n/a_      | _n/a_   |
+| `cleanUp` | Cleans up the Rotary Encoder when finished               | _n/a_      | _n/a_   |
 
 ### SevenSegmentDisplay
 
@@ -166,12 +182,12 @@ const display = new SevenSegmentDisplay(sevenSegmentDisplayConfig);
 
 #### Methods
 
-| Method           | Description                                                                               | Parameters               | Returns     |
-| ---------------- | ----------------------------------------------------------------------------------------- | ------------------------ | ----------- |
-| `setDisplay`     | Sets the display to `number`, returning a promise which resolves when the display is set. | `number` - displayNumber | `<Promise>` |
-| `getValue`       | Return the number currently displayed                                                     | _n/a_                    | `number`    |
-| `getBinaryValue` | Returns a binary representation of number currently displayed.                            | _n/a_                    | `string`    |
-| `cleanUp`        | Cleans up the Seven Segment Display when finished                                         | _n/a_                    | _n/a_       |
+| Method           | Description                                                                               | Parameters | Returns     |
+| ---------------- | ----------------------------------------------------------------------------------------- | ---------- | ----------- |
+| `setDisplay`     | Sets the display to `number`, returning a promise which resolves when the display is set. | `number`   | `<Promise>` |
+| `getValue`       | Return the number currently displayed                                                     | _n/a_      | `number`    |
+| `getBinaryValue` | Returns a binary representation of number currently displayed.                            | _n/a_      | `string`    |
+| `cleanUp`        | Cleans up the Seven Segment Display when finished                                         | _n/a_      | _n/a_       |
 
 ### Switch
 
@@ -182,7 +198,7 @@ const { Switch } = require('gpio-components');
 
 const switchConfig = {
   pin: 1,
-  onPress
+  onPress: () => console.log('Pressed!')
 };
 
 const mySwitch = new Switch(switchConfig);
@@ -190,27 +206,27 @@ const mySwitch = new Switch(switchConfig);
 
 `SwitchConfig`:
 
-| Property        | Type       | Description                                                |
-| --------------- | ---------- | ---------------------------------------------------------- |
-| `pin`           | `number`   | The GPIO pin for the switch                                |
-| `onPress`       | `function` | The callback function for when the switch is pressed       |
-| `switchOptions` | `object`   | (Optional) options for the switch. (See below for details) |
+| Property        | Type       | Description                                                                  |
+| --------------- | ---------- | ---------------------------------------------------------------------------- |
+| `pin`           | `number`   | The GPIO pin for the switch                                                  |
+| `onPress`       | `function` | The callback function for when the switch is pressed                         |
+| `switchOptions` | `object`   | (Optional) options for the switch. (See [below](#switchOptions) for details) |
 
 #### Methods
 
-| Method    | Description                                          | Parameters | Returns |
-| --------- | ---------------------------------------------------- | ---------- | ------- |
-| `watch`   | Watches the rotary encoder for any user interactions | _n/a_      | _n/a_   |
-| `cleanUp` | Cleans up the Rotary Encoder when finished           | _n/a_      | _n/a_   |
+| Method    | Description                                      | Parameters | Returns |
+| --------- | ------------------------------------------------ | ---------- | ------- |
+| `watch`   | Begins watching the switch for any interruptions | _n/a_      | _n/a_   |
+| `cleanUp` | Cleans up the Rotary Encoder when finished       | _n/a_      | _n/a_   |
 
 ### switchOptions
 
-| Option                 | Type                                                  | Description                                                                                                                                                                                                   |
-| ---------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeLow`            | `boolean`                                             | (Optional) Specify whether or not the values read from or written to the GPIO should be inverted                                                                                                              |
-| `edge`                 | "none" &#124; "rising" &#124; "falling" &#124; "both" | (Optional) Specify the interrupt generating edge or edges for the switch                                                                                                                                      |
-| `debounceTimeout`      | `number`                                              | (Optional) Specify the number of milliseconds for delaying a callback                                                                                                                                         |
-| `reconfigureDirection` | `boolean`                                             | (Optional) Specify whether the direction foir the GPIO should be reconfigured even though the direction is configured correctly. See [here](https://github.com/fivdi/onoff#gpiogpio-direction--edge--options) |
+| Option                 | Type                                                          | Description                                                                                                                                                                                                   |
+| ---------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeLow`            | `boolean`                                                     | (Optional) Specify whether or not the values read from or written to the GPIO should be inverted                                                                                                              |
+| `edge`                 | _"none"_ &#124; _"rising"_ &#124; _"falling"_ &#124; _"both"_ | (Optional) Specify the interrupt generating edge or edges for the switch                                                                                                                                      |
+| `debounceTimeout`      | `number`                                                      | (Optional) Specify the number of milliseconds for delaying a callback                                                                                                                                         |
+| `reconfigureDirection` | `boolean`                                                     | (Optional) Specify whether the direction foir the GPIO should be reconfigured even though the direction is configured correctly. See [here](https://github.com/fivdi/onoff#gpiogpio-direction--edge--options) |
 
 ## Notes
 
