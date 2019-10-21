@@ -38,7 +38,11 @@ export default class SevenSegmentDisplay {
     ]);
   }
 
-  getBinaryRepresentation(): string {
+  getValue(): number {
+    return parseInt(this.getBinaryValue(), 2);
+  }
+
+  getBinaryValue(): string {
     const zeroNum: number = this.zero.readSync();
     const oneNum: number = this.one.readSync();
     const twoNum: number = this.two.readSync();

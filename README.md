@@ -166,11 +166,12 @@ const display = new SevenSegmentDisplay(sevenSegmentDisplayConfig);
 
 #### Methods
 
-| Method                    | Description                                                                               | Parameters               | Returns     |
-| ------------------------- | ----------------------------------------------------------------------------------------- | ------------------------ | ----------- |
-| `setDisplay`              | Sets the display to `number`, returning a promise which resolves when the display is set. | `number` - displayNumber | `<Promise>` |
-| `getBinaryRepresentation` | Returns a binary representation of the current number displayed.                          | _n/a_                    | `string`    |
-| `cleanUp`                 | Cleans up the Seven Segment Display when finished                                         | _n/a_                    | _n/a_       |
+| Method           | Description                                                                               | Parameters               | Returns     |
+| ---------------- | ----------------------------------------------------------------------------------------- | ------------------------ | ----------- |
+| `setDisplay`     | Sets the display to `number`, returning a promise which resolves when the display is set. | `number` - displayNumber | `<Promise>` |
+| `getValue`       | Return the number currently displayed                                                     | _n/a_                    | `number`    |
+| `getBinaryValue` | Returns a binary representation of number currently displayed.                            | _n/a_                    | `string`    |
+| `cleanUp`        | Cleans up the Seven Segment Display when finished                                         | _n/a_                    | _n/a_       |
 
 ### Switch
 
