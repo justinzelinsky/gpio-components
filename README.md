@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
-A collection of GPIO components written in JavaScript. Supports Linux boards like the Raspberry Pi or BeagleBone.
+A collection of GPIO components written for Node in TypeScript. Supports Linux boards like the Raspberry Pi or BeagleBone.
 
 _NOTE_ Not ready for production usage (yet ;) )
 
