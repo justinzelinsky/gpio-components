@@ -157,6 +157,10 @@ const encoder = new RotaryEncoder(rotaryEncoderConfig);
 
 ### SevenSegmentDisplay
 
+_Note_:
+
+This implementation of a Seven Segment Display assumes usage along side of single-digit BCD-to-7-segment decoder circuit (e.g CD4055).
+
 #### Constructor
 
 ```javascript
