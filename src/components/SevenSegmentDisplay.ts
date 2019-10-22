@@ -1,6 +1,6 @@
 import { Gpio, BinaryValue } from 'onoff';
 
-import { getBinaryValue } from 'components/utils';
+import { getBinaryValue } from './utils';
 
 export type SevenSegmentDisplayConfig = {
   pinZero: number;
