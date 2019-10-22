@@ -24,6 +24,9 @@
     "rotary encoder",
     "typescript"
   ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "author": "Justin Zelinsky",
   "license": "MIT",
   "dependencies": {

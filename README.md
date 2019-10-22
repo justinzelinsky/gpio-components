@@ -26,7 +26,7 @@ A collection of GPIO components written for Node in TypeScript. Supports Linux b
 
 ## Requirements
 
-NodeJS versions 6, 8, 10, or 12.
+NodeJS 12.0+
 
 ## Installation
 
