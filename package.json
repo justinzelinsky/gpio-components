@@ -24,6 +24,7 @@
     "rotary encoder",
     "typescript"
   ],
+  "homepage": "https://github.com/justinzelinsky/gpio-components",
   "engines": {
     "node": ">=12.0.0"
   },
