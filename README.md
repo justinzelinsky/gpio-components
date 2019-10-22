@@ -10,8 +10,6 @@
 
 A collection of GPIO components written for Node in TypeScript. Supports Linux boards like the Raspberry Pi or BeagleBone.
 
-_NOTE_ Not ready for production usage (yet ;) )
-
 ## Contents
 
 - [Requirements](#requirements)
@@ -122,6 +120,10 @@ const ledSwitch = new LEDSwitch(ledSwitchConfig);
 
 ### RotaryEncoder
 
+_Note:_
+
+This implementation of a Rotary Encoder is for a three pin Rotary Encoder.
+
 #### Constructor
 
 ```javascript
@@ -222,7 +224,7 @@ const mySwitch = new Switch(switchConfig);
 | Method    | Description                                      | Parameters | Returns |
 | --------- | ------------------------------------------------ | ---------- | ------- |
 | `watch`   | Begins watching the switch for any interruptions | _n/a_      | _n/a_   |
-| `cleanUp` | Cleans up the Rotary Encoder when finished       | _n/a_      | _n/a_   |
+| `cleanUp` | Cleans up the switch when finished               | _n/a_      | _n/a_   |
 
 ### switchOptions
 
@@ -251,4 +253,4 @@ process.on('SIGINT', _ => {
 
 ## Special Thanks
 
-Many thanks to [Brian Cooke](https://github.com/fivdi) for his excellent library [onoff](https://github.com/fivdi/onoff) which without would have made this library not possible -- or at least much more difficult. :)
+Many thanks to [Brian Cooke](https://github.com/fivdi) for his excellent library [onoff](https://github.com/fivdi/onoff) which without would have made this library not possible -- or at least much more difficult. Also thanks for my friend Gene Crocetti for his help with the hardware-side of this project. Without him as well, this would not have been possible.

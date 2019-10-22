@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git://github.com/justinzelinsky/gpio-components.git"
   },
+  "bugs": "https://github.com/justinzelinsky/gpio-components/issues",
   "keywords": [
     "gpio",
     "components",
