@@ -5,7 +5,10 @@ os:
   - osx
 install:
   - npm install -g codecov
-  - npm install
+  - npm ci
 script:
   - npm test
   - codecov
+cache:
+  directories:
+    - "$HOME/.npm"
