@@ -1,18 +1,18 @@
-import { Gpio } from 'onoff';
-export declare type RotaryEncoderConfig = {
+declare type RotaryEncoderConfig = {
     onAlways?: Function;
     onDecrement?: Function;
     onIncrement?: Function;
     pinA: number;
     pinB: number;
 };
-export default class RotaryEncoder {
-    encoderA: Gpio;
-    encoderB: Gpio;
-    onIncrement: Function;
-    onDecrement: Function;
-    onAlways: Function;
+declare class RotaryEncoder {
+    private encoderA;
+    private encoderB;
+    private onIncrement;
+    private onDecrement;
+    private onAlways;
     constructor(config: RotaryEncoderConfig);
     watch(): void;
     cleanUp(): void;
 }
+export default RotaryEncoder;

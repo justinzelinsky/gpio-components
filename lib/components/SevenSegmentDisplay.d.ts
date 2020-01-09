@@ -1,18 +1,18 @@
-import { Gpio } from 'onoff';
-export declare type SevenSegmentDisplayConfig = {
+declare type SevenSegmentDisplayConfig = {
     pinZero: number;
     pinOne: number;
     pinTwo: number;
     pinThree: number;
 };
-export default class SevenSegmentDisplay {
-    zero: Gpio;
-    one: Gpio;
-    two: Gpio;
-    three: Gpio;
+declare class SevenSegmentDisplay {
+    private zero;
+    private one;
+    private two;
+    private three;
     constructor(config: SevenSegmentDisplayConfig);
     setDisplay(displayNumber: number): Promise<[void, void, void, void]>;
     getValue(): number;
     getBinaryValue(): string;
     cleanUp(): void;
 }
+export default SevenSegmentDisplay;

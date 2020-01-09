@@ -1,9 +1,8 @@
-import { Gpio } from 'onoff';
-export declare type LEDConfig = {
+declare type LEDConfig = {
     pin: number;
 };
-export default class LED {
-    led: Gpio;
+declare class LED {
+    private led;
     constructor(config: LEDConfig);
     isOn(): boolean;
     turnOn(): void;
@@ -11,3 +10,4 @@ export default class LED {
     toggle(): boolean;
     cleanUp(): void;
 }
+export default LED;

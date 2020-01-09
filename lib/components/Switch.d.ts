@@ -1,4 +1,4 @@
-import { Edge, Gpio, Options } from 'onoff';
+import { Edge, Options } from 'onoff';
 export declare type SwitchCallback = () => void;
 export declare type SwitchOptions = Options & {
     edge?: Edge;
@@ -9,10 +9,11 @@ export declare type SwitchConfig = {
     switchOptions?: SwitchOptions;
 };
 export declare const defaultSwitchOptions: SwitchOptions;
-export default class Switch {
-    switch: Gpio;
-    onPress: SwitchCallback;
+declare class Switch {
+    private switch;
+    private onPress;
     constructor(config: SwitchConfig);
     watch(): void;
     cleanUp(): void;
 }
+export default Switch;

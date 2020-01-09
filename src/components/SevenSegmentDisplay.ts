@@ -2,18 +2,18 @@ import { Gpio, BinaryValue } from 'onoff';
 
 import { getBinaryValue } from './utils';
 
-export type SevenSegmentDisplayConfig = {
+type SevenSegmentDisplayConfig = {
   pinZero: number;
   pinOne: number;
   pinTwo: number;
   pinThree: number;
 };
 
-export default class SevenSegmentDisplay {
-  zero: Gpio;
-  one: Gpio;
-  two: Gpio;
-  three: Gpio;
+class SevenSegmentDisplay {
+  private zero: Gpio;
+  private one: Gpio;
+  private two: Gpio;
+  private three: Gpio;
 
   constructor(config: SevenSegmentDisplayConfig) {
     const { pinZero, pinOne, pinTwo, pinThree } = config;
@@ -24,7 +24,9 @@ export default class SevenSegmentDisplay {
     this.three = new Gpio(pinThree, 'out');
   }
 
-  async setDisplay(displayNumber: number): Promise<[void, void, void, void]> {
+  public async setDisplay(
+    displayNumber: number
+  ): Promise<[void, void, void, void]> {
     const zeroValue: BinaryValue = getBinaryValue(displayNumber % 2);
     const oneValue: BinaryValue = getBinaryValue((displayNumber >> 1) % 2);
     const twoValue: BinaryValue = getBinaryValue((displayNumber >> 2) % 2);
@@ -38,11 +40,11 @@ export default class SevenSegmentDisplay {
     ]);
   }
 
-  getValue(): number {
+  public getValue(): number {
     return parseInt(this.getBinaryValue(), 2);
   }
 
-  getBinaryValue(): string {
+  public getBinaryValue(): string {
     const zeroNum: number = this.zero.readSync();
     const oneNum: number = this.one.readSync();
     const twoNum: number = this.two.readSync();
@@ -51,10 +53,12 @@ export default class SevenSegmentDisplay {
     return `${threeNum}${twoNum}${oneNum}${zeroNum}`;
   }
 
-  cleanUp(): void {
+  public cleanUp(): void {
     this.zero.unexport();
     this.one.unexport();
     this.two.unexport();
     this.three.unexport();
   }
 }
+
+export default SevenSegmentDisplay;

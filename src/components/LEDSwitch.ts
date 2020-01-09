@@ -1,18 +1,18 @@
 import LED from './LED';
 import Switch, { SwitchOptions, SwitchCallback } from './Switch';
 
-export type LEDSwitchCallback = (isOn: boolean) => void;
+type LEDSwitchCallback = (isOn: boolean) => void;
 
-export type LEDSwitchConfig = {
+type LEDSwitchConfig = {
   ledPin: number;
   onPress: LEDSwitchCallback;
   switchOptions?: SwitchOptions;
   switchPin: number;
 };
 
-export default class LEDSwitch {
-  led: LED;
-  switch: Switch;
+class LEDSwitch {
+  private led: LED;
+  private switch: Switch;
 
   constructor(config: LEDSwitchConfig) {
     const { ledPin, onPress, switchOptions, switchPin } = config;
@@ -33,16 +33,18 @@ export default class LEDSwitch {
     });
   }
 
-  watch(): void {
+  public watch(): void {
     this.switch.watch();
   }
 
-  isOn(): boolean {
+  public isOn(): boolean {
     return this.led.isOn();
   }
 
-  cleanUp(): void {
+  public cleanUp(): void {
     this.led.cleanUp();
     this.switch.cleanUp();
   }
 }
+
+export default LEDSwitch;

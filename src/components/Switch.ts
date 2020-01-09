@@ -17,9 +17,9 @@ export const defaultSwitchOptions: SwitchOptions = {
   edge: 'rising'
 };
 
-export default class Switch {
-  switch: Gpio;
-  onPress: SwitchCallback;
+class Switch {
+  private switch: Gpio;
+  private onPress: SwitchCallback;
 
   constructor(config: SwitchConfig) {
     const { onPress, pin, switchOptions = defaultSwitchOptions } = config;
@@ -30,7 +30,7 @@ export default class Switch {
     this.onPress = onPress;
   }
 
-  watch(): void {
+  public watch(): void {
     this.switch.watch(err => {
       if (err) {
         throw err;
@@ -39,7 +39,9 @@ export default class Switch {
     });
   }
 
-  cleanUp(): void {
+  public cleanUp(): void {
     this.switch.unexport();
   }
 }
+
+export default Switch;
