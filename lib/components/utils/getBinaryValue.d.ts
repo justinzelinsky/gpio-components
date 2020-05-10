@@ -1,2 +1,3 @@
-declare const getBinaryValue: (value: number) => import("onoff").BinaryValue;
+import { BinaryValue } from 'onoff';
+declare function getBinaryValue(value: number): BinaryValue;
 export default getBinaryValue;

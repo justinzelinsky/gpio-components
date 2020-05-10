@@ -1,2 +1,2 @@
-declare const noop: () => void;
+declare function noop(): void;
 export default noop;
