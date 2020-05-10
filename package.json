@@ -31,12 +31,12 @@
   "author": "Justin Zelinsky",
   "license": "MIT",
   "dependencies": {
-    "onoff": "^5.0.0"
+    "onoff": "^6.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.19",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.1.0",
-    "typescript": "^3.6.4"
+    "@types/jest": "^25.2.1",
+    "jest": "^26.0.1",
+    "ts-jest": "^25.5.1",
+    "typescript": "^3.8.3"
   }
 }
