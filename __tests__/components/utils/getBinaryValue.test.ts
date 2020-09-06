@@ -1,6 +1,6 @@
 import { Gpio } from 'onoff';
 
-import { getBinaryValue } from '../../../src/components/utils';
+import getBinaryValue  from '../../../src/components/utils/getBinaryValue';
 
 describe('test getBinaryValue', () => {
   it('should should return the proper binary value', () => {
