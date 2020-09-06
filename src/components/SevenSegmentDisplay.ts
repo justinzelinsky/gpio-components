@@ -1,6 +1,6 @@
 import { Gpio, BinaryValue } from 'onoff';
 
-import { getBinaryValue } from './utils';
+import getBinaryValue from './utils/getBinaryValue';
 
 type SevenSegmentDisplayConfig = {
   pinZero: number;
@@ -24,9 +24,7 @@ class SevenSegmentDisplay {
     this.three = new Gpio(pinThree, 'out');
   }
 
-  public async setDisplay(
-    displayNumber: number
-  ): Promise<[void, void, void, void]> {
+  public async setDisplay(displayNumber: number): Promise<[void, void, void, void]> {
     const zeroValue: BinaryValue = getBinaryValue(displayNumber % 2);
     const oneValue: BinaryValue = getBinaryValue((displayNumber >> 1) % 2);
     const twoValue: BinaryValue = getBinaryValue((displayNumber >> 2) % 2);

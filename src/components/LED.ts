@@ -1,6 +1,6 @@
 import { BinaryValue, Gpio } from 'onoff';
 
-import { getBinaryValue } from './utils';
+import getBinaryValue from './utils/getBinaryValue';
 
 type LEDConfig = {
   pin: number;

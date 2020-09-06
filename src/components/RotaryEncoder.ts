@@ -1,6 +1,6 @@
 import { BinaryValue, Gpio, ValueCallback } from 'onoff';
 
-import { noop } from './utils';
+import noop from './utils/noop';
 
 type RotaryEncoderConfig = {
   onAlways?: Function;
